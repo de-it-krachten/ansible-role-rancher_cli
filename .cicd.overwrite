@@ -1,0 +1,15 @@
+---
+
+# Generic
+generic:
+  role: ansible-role-rancher_cli
+  role_short: rancher_cli
+  role_description: |
+    Installs Rancher CLI<br>
+    https://github.com/rancher/cli<br>
+  collections: []
+
+# Molecule
+molecule:
+  requirements:
+    roles_extra: []

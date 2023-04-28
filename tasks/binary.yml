@@ -1,0 +1,99 @@
+---
+
+- name: Lookup alternative system & architecture
+  ansible.builtin.set_fact:
+    rancher_cli_system: "{{ rancher_cli['system'][ansible_system] }}"
+    rancher_cli_architecture: "{{ rancher_cli['architecture'][ansible_architecture] | default(ansible_architecture) }}"
+
+- name: Get rancher_cli version installed
+  ansible.builtin.shell: |
+    set -o pipefail
+    rancher --version | awk '{print $NF}'
+  args:
+    executable: /bin/bash
+  changed_when: no
+  failed_when: no
+  check_mode: no
+  register: rancher_cli_version_installed
+
+- name: Set installed version as fact
+  ansible.builtin.set_fact:
+    rancher_cli_version_installed: "{{ 'N/A' if rancher_cli_version_installed.stdout | length == 0 else rancher_cli_version_installed.stdout }}"
+
+- name: Get latest rancher_cli release info
+  ansible.builtin.uri:
+    url: "{{ rancher_cli_api + '/releases/latest' }}"
+  check_mode: no
+  register: rancher_cli_version_info
+
+- name: Get latest release tag
+  ansible.builtin.set_fact:
+    rancher_cli_version_latest: "{{ rancher_cli_version_info.json.tag_name }}"
+
+- name: Replace 'latest' by the actual version
+  ansible.builtin.set_fact:
+    rancher_cli_version: "{{ rancher_cli_version_latest }}"
+  when: rancher_cli_version == 'latest'
+
+- name: Get all rancher_cli releases info
+  ansible.builtin.uri:
+    url: "{{ rancher_cli_api + '/releases?per_page=1000' }}"
+  check_mode: no
+  register: rancher_cli_version_info
+
+- name: Get version information
+  ansible.builtin.set_fact:
+    rancher_cli_version_info: "{{ rancher_cli_version_info.json | json_query(query) | first }}"
+  vars:
+    query: "[?tag_name=='{{ rancher_cli_version }}']"
+
+- name: Show rancher_cli release
+  ansible.builtin.debug:
+    msg:
+      - "rancher_cli latest release    : {{ rancher_cli_version_latest }}"
+      - "rancher_cli requested release : {{ rancher_cli_version }}"
+      - "rancher_cli installed release : {{ rancher_cli_version_installed }}"
+
+- name: Install/update rancher_cli
+  when: rancher_cli_version != rancher_cli_version_installed
+  block:
+
+    - name: Create temporary directory
+      ansible.builtin.tempfile:
+        state: directory
+      changed_when: false
+      register: __tmpdir
+
+    - name: Get download location for binary/archive
+      ansible.builtin.set_fact:
+        rancher_cli_url: "{{ rancher_cli_version_info.assets | json_query(query) | first }}"
+      vars:
+        query: "[?name=='{{ rancher_cli_file }}'].browser_download_url"
+
+    - name: Download binary/archive
+      ansible.builtin.get_url:
+        url: "{{ rancher_cli_url }}"
+        dest: "{{ __tmpdir.path }}/"
+        mode: "0644"
+      changed_when: false
+
+    - name: Extract archive
+      ansible.builtin.unarchive:
+        src: "{{ __tmpdir.path }}/{{ rancher_cli_file }}"
+        dest: "{{ __tmpdir.path }}/"
+        remote_src: true
+      changed_when: false
+
+    - name: Copy binary to {{ rancher_cli_path }}
+      ansible.builtin.copy:
+        src: "{{ __tmpdir.path }}/rancher-{{ rancher_cli_version }}/rancher"
+        dest: "{{ rancher_cli_path }}"
+        mode: "0555"
+        remote_src: true
+      become: yes
+
+    - name: Cleanup temporary directory
+      ansible.builtin.file:
+        path: "{{ __tmpdir.path }}"
+        state: absent
+      changed_when: false

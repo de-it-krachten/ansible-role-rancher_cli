@@ -1,0 +1,31 @@
+---
+
+# Github CLI - API
+rancher_cli_api: https://api.github.com/repos/rancher/cli
+
+# Github CLI - repo
+rancher_cli_repo: https://github.com/ranche/cli
+
+# Lookup table for architecture
+rancher_cli:
+  architecture:
+    x86_64: amd64
+    i386: i386
+    armv6l: arm
+    armv7l: arm
+    aarch64: arm64
+  system:
+    Linux: linux
+    Darwin: darwin
+
+# Construct filename based on the system & architecture
+rancher_cli_file: "rancher-{{ rancher_cli_system }}-{{ rancher_cli_architecture }}-{{ rancher_cli_version }}.tar.gz"
+
+# Version of the CLI to install
+rancher_cli_version: latest
+
+# Location/ownership/permissions of the binary
+rancher_cli_path: /usr/local/bin/rancher
+rancher_cli_owner: root
+rancher_cli_group: root
+rancher_cli_mode: '0755'
