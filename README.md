@@ -84,8 +84,6 @@ rancher_cli_mode: '0755'
 - name: sample playbook for role 'rancher_cli'
   hosts: all
   become: "yes"
-  roles:
-    - deitkrachten.showinfo
   tasks:
     - name: Include role 'rancher_cli'
       ansible.builtin.include_role:
