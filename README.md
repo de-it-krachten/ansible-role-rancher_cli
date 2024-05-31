@@ -14,7 +14,7 @@ https://github.com/rancher/cli<br>
 None
 
 #### Collections
-- community.general
+None
 
 ## Platforms
 
@@ -32,13 +32,13 @@ Supported platforms
 - AlmaLinux 9
 - SUSE Linux Enterprise 15<sup>1</sup>
 - openSUSE Leap 15
-- Debian 10 (Buster)<sup>1</sup>
 - Debian 11 (Bullseye)
 - Debian 12 (Bookworm)
 - Ubuntu 20.04 LTS
 - Ubuntu 22.04 LTS
-- Fedora 37
-- Fedora 38
+- Ubuntu 24.04 LTS
+- Fedora 39
+- Fedora 40
 
 Note:
 <sup>1</sup> : no automated testing is performed on these platforms
@@ -85,7 +85,7 @@ rancher_cli_mode: '0755'
 <pre><code>
 - name: sample playbook for role 'rancher_cli'
   hosts: all
-  become: "yes"
+  become: 'yes'
   tasks:
     - name: Include role 'rancher_cli'
       ansible.builtin.include_role:
