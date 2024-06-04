@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/de-it-krachten/ansible-role-rancher_cli/compare/v1.1.0...v1.2.0) (2024-06-04)
+
+
+### Features
+
+* Add support for Ubuntu 24.04 LTS + Fedora 40 ([cf8c9ae](https://github.com/de-it-krachten/ansible-role-rancher_cli/commit/cf8c9ae95e19181760f04d1087c7088d0de31098))
+
 # [1.1.0](https://github.com/de-it-krachten/ansible-role-rancher_cli/compare/v1.0.0...v1.1.0) (2023-08-14)
 
 
