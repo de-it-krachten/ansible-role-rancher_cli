@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/de-it-krachten/ansible-role-rancher_cli/compare/v1.2.0...v1.3.0) (2024-12-29)
+
+
+### Features
+
+* Update supported platforms & CI ([f9cfa10](https://github.com/de-it-krachten/ansible-role-rancher_cli/commit/f9cfa10140db58713d0e1f2cb8c3ea8e0bd9c57d))
+
 # [1.2.0](https://github.com/de-it-krachten/ansible-role-rancher_cli/compare/v1.1.0...v1.2.0) (2024-06-04)
 
 
