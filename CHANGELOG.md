@@ -1,3 +1,14 @@
+# [1.4.0](https://github.com/de-it-krachten/ansible-role-rancher_cli/compare/v1.3.0...v1.4.0) (2025-08-07)
+
+
+### Features
+
+* Add support for AlmaLinux 10 ([c2212e8](https://github.com/de-it-krachten/ansible-role-rancher_cli/commit/c2212e8ae24b8f6d2d1924d52fb1836f0b2cc8f0))
+* Add support for Debian 13 (Trixie) ([a007934](https://github.com/de-it-krachten/ansible-role-rancher_cli/commit/a007934c84fa30b4d725afa9f12c50094edda84d))
+* Add support for OracleLinux 10 ([3ce12b0](https://github.com/de-it-krachten/ansible-role-rancher_cli/commit/3ce12b04ade3a2f72f03045489ed5d08df0ecb14))
+* Add support for Red Hat Enterprise Linux 10 ([4368082](https://github.com/de-it-krachten/ansible-role-rancher_cli/commit/4368082f48b9685f7f970a43602b6e0a37980556))
+* Add support for RockyLinux 10 ([14e9d80](https://github.com/de-it-krachten/ansible-role-rancher_cli/commit/14e9d80d778f0a048d164b1b303c141df05f1838))
+
 # [1.3.0](https://github.com/de-it-krachten/ansible-role-rancher_cli/compare/v1.2.0...v1.3.0) (2024-12-29)
 
 
