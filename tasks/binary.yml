@@ -2,8 +2,8 @@
 
 - name: Lookup alternative system & architecture
   ansible.builtin.set_fact:
-    rancher_cli_system: "{{ rancher_cli['system'][ansible_system] }}"
-    rancher_cli_architecture: "{{ rancher_cli['architecture'][ansible_architecture] | default(ansible_architecture) }}"
+    rancher_cli_system: "{{ rancher_cli['system'][ansible_facts.system] }}"
+    rancher_cli_architecture: "{{ rancher_cli['architecture'][ansible_facts.architecture] | default(ansible_facts.architecture) }}"
 
 - name: Get rancher_cli version installed
   ansible.builtin.shell: |
