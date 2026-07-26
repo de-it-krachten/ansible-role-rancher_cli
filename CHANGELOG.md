@@ -1,3 +1,13 @@
+# [1.6.0](https://github.com/de-it-krachten/ansible-role-rancher_cli/compare/v1.5.0...v1.6.0) (2026-07-26)
+
+
+### Features
+
+* Add support for ansible-core 2.20+ ([d53ec6d](https://github.com/de-it-krachten/ansible-role-rancher_cli/commit/d53ec6d7ed0a82b5036c85cde1decf6c98e246e9))
+* Added support for Fedora 44 ([4e37e6d](https://github.com/de-it-krachten/ansible-role-rancher_cli/commit/4e37e6d4d310f31fcc68f9bbebfbf49e9d3a3cee))
+* Added support for Ubuntu 26.04 LTS ([1c60b30](https://github.com/de-it-krachten/ansible-role-rancher_cli/commit/1c60b30292f75e89ded2a66ea6dfa8b3caeb4f3f))
+* Drop support for Fedora 42 ([699aee9](https://github.com/de-it-krachten/ansible-role-rancher_cli/commit/699aee9ed3e3d25fecd24e64506d86d39f507e9c))
+
 # [1.5.0](https://github.com/de-it-krachten/ansible-role-rancher_cli/compare/v1.4.0...v1.5.0) (2026-03-15)
 
 
