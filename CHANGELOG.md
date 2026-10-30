@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/de-it-krachten/ansible-role-rancher_cli/compare/v1.6.0...v1.7.0) (2026-10-30)
+
+
+### Features
+
+* Drop support for Debian 11 (Bullseye) ([ac484b3](https://github.com/de-it-krachten/ansible-role-rancher_cli/commit/ac484b3798bd970519fa02578b8365f38024e2f4))
+
 # [1.6.0](https://github.com/de-it-krachten/ansible-role-rancher_cli/compare/v1.5.0...v1.6.0) (2026-07-26)
 
 
